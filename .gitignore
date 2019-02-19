@@ -1,3 +1,22 @@
 /*/logs/*.log
 mysql/data/*
 !mysql/data/.keep
+www/public/node_modules
+www/public/wp-config.php
+www/public/wp-content/advanced-cache.php
+www/public/wp-content/backup-db/
+www/public/wp-content/backups/
+www/public/wp-content/blogs.dir/
+www/public/wp-content/cache/
+www/public/wp-content/upgrade/
+www/public/wp-content/uploads/
+www/public/wp-content/mu-plugins/
+www/public/wp-content/wp-cache-config.php
+www/public/wp-content/plugins/hello.php
+
+# LOGS
+/php/logs/*
+/nginx/logs/*
+/mysql/logs/*
+
+php/composer/cache/

@@ -6,13 +6,12 @@ services:
     working_dir: "/var/www/public"
     volumes:
       - ./www/:/var/www/
-    command: "grunt watch"
+    command: "grunt watch -d -v"
 
   mysql:
     image: mysql:5.7
-    restart: always
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - mysql:/var/lib/mysql/:rw
       - ./mysql/logs/:/var/log/mysql/:rw
@@ -38,6 +37,7 @@ services:
       - COMPOSER_ALLOW_SUPERUSER=1
     ports:
         - "9000:9000"
+        - "9001:9001"
     links:
       - mysql
     depends_on:
@@ -45,9 +45,8 @@ services:
 
   nginx:
     image: nginx:stable
-    restart: always
     ports:
-      - "9999:80"
+      - "8000:80"
     volumes:
       - ./www/:/var/www/
       - ./nginx/conf.d/:/etc/nginx/conf.d/

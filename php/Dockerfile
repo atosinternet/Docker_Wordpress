@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         vim \
         re2c \
-        libpng3 \
+        # libpng3 \
         libtidy-dev \
         libgd-dev \
         libvpx-dev \
@@ -25,25 +25,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         wget \
         librabbitmq-dev \
-        libzip-dev \
-        libzip2 \
-        libpng++-dev \
+        # libzip-dev \
+        # libzip2 \
+        # libpng++-dev \
         libxslt1-dev \
         libimlib2-dev \
         libxpm-dev \
         libltdl-dev \
         libbz2-dev \
         zlib1g-dev \
-		libicu52 \
-        libicu-dev \
-		libpng-dev \
+		# libicu52 \
+        # libicu-dev \
+		# libpng-dev \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
 		libmcrypt4 \
 		libmcrypt-dev \
         libcurl4-gnutls-dev \
         libxml2-dev \
-        libpng12-dev \
+        # libpng12-dev \
         libssl-dev \
         unzip \
         libxslt-dev \
@@ -78,18 +78,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         posix \
 	&& apt-get purge -y \
 		zlib1g-dev \
-		libicu-dev \
-		libpng-dev \
+		# libicu-dev \
+		# libpng-dev \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
 		libmcrypt-dev \
 	&& apt-get autoremove -y
 
+## Install GD
+RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev 
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install gd
+
 #Xdebug
-#RUN yes | pecl install xdebug
+RUN yes | pecl install xdebug
 
 #APCu
 #RUN yes | pecl install apcu-5.1.5 && docker-php-ext-enable apcu wddx
+
+## Install Composer
+RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
 RUN chown -R www-data:www-data /var/www/
 RUN chmod -R g+w /var/www/

@@ -10,9 +10,10 @@ Estruturação
 
 | Container  | Versions   | Service name |
 | ---------- | ---------- | ------------ |
-| Nginx      | lastes     | `nginx`      |
-| PHP        | 7.1-FPM    | `php`        |
-| MySQL      | 5.7        | `mysql`    |
+| Nginx      | lastest    | `nginx`      |
+| PHP        | 7.1-fpm    | `php`        |
+| MySQL      | 5.7        | `mysql`      |
+| Grunt/Node | 5.7        | `grunt`      |
 
 Suporta Wordpress 4.8.1 ou superior
 
@@ -21,6 +22,7 @@ Suporta Wordpress 4.8.1 ou superior
 # Instalação
 
 Baixar a versão do Wordpress 4.8.1 ou superior e instalar na pasta ./www/public/
+Wordpress rodando na http://localhost:8000
 
 # Configuração do Banco de Dados MySQL
 
